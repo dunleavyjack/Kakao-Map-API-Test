@@ -25,8 +25,10 @@ export default function Map() {
     });
   };
 
-  console.log("haskjdhalskdjhla");
+  console.log("Test 1");
   console.log(getAddress("역삼동792-11 논현로71길 43-2 201호 강남구"));
+
+  const promise = getAddress("역삼동792-11 논현로71길 43-2 201호 강남구");
 
   const mapscript = () => {
     let container = document.getElementById("map");
