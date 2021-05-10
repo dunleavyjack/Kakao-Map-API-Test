@@ -11,24 +11,56 @@ export default function Map() {
 
   const geocoder = new kakao.maps.services.Geocoder();
 
-  const getAddress = async (address) => {
-    await geocoder.addressSearch(address, async function (result, status) {
-      if (status === kakao.maps.services.Status.OK) {
-        const coords = {
-          y: result[0].y,
-          x: result[0].x,
-        };
-        console.log("hiiiii");
-        console.log(coords);
-        return coords;
+  const x = () => {
+    geocoder.addressSearch(
+      "제주특별자치도 제주시 첨단로 242",
+      function (result, status) {
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          console.log("inside function");
+          console.log(coords);
+          return coords;
+        }
       }
-    });
+    );
   };
 
-  console.log("Test 1");
-  console.log(getAddress("역삼동792-11 논현로71길 43-2 201호 강남구"));
+  console.log("function return");
+  console.log(x());
 
-  const promise = getAddress("역삼동792-11 논현로71길 43-2 201호 강남구");
+  // const address = "역삼동792-11 논현로71길 43-2 201호 강남구";
+  // let coordinates = geocoder.addressSearch(address, function (result, status) {
+  //   if (status === kakao.maps.services.Status.OK) {
+  //     const coords = {
+  //       y: result[0].y,
+  //       x: result[0].x,
+  //     };
+  //     return coords;
+  //   }
+  // });
+  // console.log(coordinates);
+
+  // const getAddress = async (address) => {
+  //   await geocoder.addressSearch(address, async function (result, status) {
+  //     if (status === kakao.maps.services.Status.OK) {
+  //       const coords = {
+  //         y: result[0].y,
+  //         x: result[0].x,
+  //       };
+  //       console.log("hiiiii");
+  //       console.log(coords);
+  //       return coords;
+  //     }
+  //   });
+  // };
+
+  // let address = getAddress("역삼동792-11 논현로71길 43-2 201호 강남구").then(
+  //   (result) => {
+  //     return result;
+  //   }
+  // );
+  // console.log(address);
 
   const mapscript = () => {
     let container = document.getElementById("map");
