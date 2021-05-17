@@ -20,7 +20,7 @@ export default function Map() {
           y: result[0].y,
         });
       } else {
-        console.log("Hmm, we can't seem to find that address");
+        console.log("Hmm, can't seem to find that address");
       }
     });
   };
